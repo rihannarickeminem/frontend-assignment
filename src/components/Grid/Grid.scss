@@ -1,0 +1,49 @@
+.grid-container {
+    padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    grid-template-rows: 100vh;
+    .grid-item {
+        border-radius: 15px;
+    }
+    .left-sidebar {
+        padding: 15px;
+        border: 1px solid #FEB5F5;
+        .requiredXYs {
+            list-style-type: none;
+            padding: 3px;
+            border: 3px solid #FEB5F5;
+            border-width: 3px 3px 0px 3px;
+        }
+        ul {
+          padding: 0;
+        }
+        ul li.requiredXYs:last-child  {
+            border-bottom-width: 3px;
+        }
+        // background-color: #FEB5F5;
+    }
+    .main-content {
+        border: 1px solid #76daff;
+        padding: 15px;
+        // background-color: #76daff;
+    }
+    .my-svg{ /* svg into : object, img or inline */
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%; /* only required for <img /> */
+    }
+    svg text {
+      opacity: 1 !important;
+    }
+    .my-svg-container{
+      display: inline-block;
+      position: relative;
+      width: 50%;
+      padding-bottom: 60%; /* depends on svg ratio, for my zebra height/width = 1.2 so padding-bottom = 50% * 1.2 = 60% */
+
+      vertical-align: middle; /* top | middle | bottom ... do what you want */
+    }
+}
