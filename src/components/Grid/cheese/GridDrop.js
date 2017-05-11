@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Square from './Square';
+import BoardSquare from './BoardSquare';
 // import Knight from './Knight';
 
 export default class Board extends Component {
@@ -13,12 +14,15 @@ export default class Board extends Component {
     // const piece = (x === 7 && y === 4) ?
     //   <Knight /> :
     //   null;
+    // <Square black={black}>
+    // </Square>
 
     return (
       <div key={i}
-           style={{ width: '10%', height: '10%' }}>
-        <Square black={black}>
-        </Square>
+        style={{ width: '10%', height: '10%' }}>
+        <BoardSquare x={x} y={y}>
+          {this.renderPiece(x, y)}
+        </BoardSquare>
       </div>
     );
   }
