@@ -37,12 +37,23 @@
     svg text {
       opacity: 1 !important;
     }
-    .my-svg-container{
+    .my-svg-container {
       display: inline-block;
       position: relative;
       width: 100%;
       padding-bottom: 100%; /* aspect ratio */
       vertical-align: top;
       overflow: hidden;
+    }
+    .front-board {
+      width: 300px;
+      height: 253px;
+      display: flex;
+      flex-wrap: wrap;
+      position: absolute;
+      z-index: 999;
+      opacity: 0.1;
+      top: 30px;
+      left: 50px;
     }
 }

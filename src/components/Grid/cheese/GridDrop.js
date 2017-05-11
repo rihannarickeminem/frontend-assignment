@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Square from './Square';
 import BoardSquare from './BoardSquare';
+import classes from '../Grid.scss'
 // import Knight from './Knight';
 
 export default class Board extends Component {
@@ -31,25 +32,9 @@ export default class Board extends Component {
     }
 
     return (
-      <div style={{
-        width: '300px',
-        height: '253px',
-        display: 'flex',
-        flexWrap: 'wrap',
-        position: 'absolute',
-        zIndex: '999',
-        opacity: '0.1',
-        top: '30px',
-        left: '50px',
-      }}>
+      <div className={classes["front-board"]}>
         {squares}
       </div>
     );
   }
 }
-
-Board.propTypes = {
-  // knightPosition: PropTypes.arrayOf(
-  //   PropTypes.number.isRequired
-  // ).isRequired
-};
