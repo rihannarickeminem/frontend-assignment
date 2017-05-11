@@ -16,19 +16,40 @@ class GridArea extends Component {
       width: this.props.width,
       height: this.props.height,
       svgId: this.props.svgId,
+      svgGId: 'svgGId',
       gridDropTop: this.props.gridDropTop,
       gridDropLeft: this.props.gridDropLeft,
     };
   }
   onResize(){
     console.log('awegawg aw ');
-    const item = document.getElementById(this.state.svgId);
+    const item = document.getElementById(this.state.svgGId);
     const rect = item.getBoundingClientRect();
+    this.setState({
+      gridDropTop: rect.top,
+      gridDropLeft: rect.left,
+    });
     console.log('sadfas ', rect)
+    console.log('p.offsetLeft, p.offsetTop ', item.offsetLeft, item.offsetTop);
   }
 
+  componentWillMount() {
+    // this.onResize();
+    // const item = document.getElementById(this.state.svgGId);
+    // const svgHeight = item.clientHeight;
+    // const rect = item.getBoundingClientRect();
+    // window.addEventListener("resize", this.onResize.bind(this));
+    // this.setState({
+    //   gridDropTop: rect.top,
+    //   gridDropLeft: rect.left,
+    // });
+
+    // console.log('sadfas ', svgHeight)
+    // console.log('sadfas ', rect)
+    // window.addEventListener("resize", this.updateDimensions);
+  }
   componentDidMount() {
-    const item = document.getElementById(this.props.svgId);
+    const item = document.getElementById(this.state.svgGId);
     const svgHeight = item.clientHeight;
     const rect = item.getBoundingClientRect();
     window.addEventListener("resize", this.onResize.bind(this));
@@ -82,7 +103,7 @@ class GridArea extends Component {
       <div>
         <div >
           <svg id={this.props.svgId} width={this.state.width} height={this.props.height}>
-            <g transform={transform}>
+            <g id={this.state.svgGId} transform={transform}>
               <Xgrid
                 width={width}
                 height={height}
