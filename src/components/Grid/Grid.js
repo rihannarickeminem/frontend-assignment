@@ -79,17 +79,6 @@ LineChart.defaultProps = {
 	height: 250,
 	chartId: 'v1_chart'
 };
-=======
-import React, {Component} from 'react'
-
-import classes from './Grid.scss'
-import * as d3 from "d3";
-import Square from './cheese/Square';
-import GridDrop from './cheese/GridDrop';
-// import Board from './cheese/Board';
-const Xgrid = require('react-d3-core').Xgrid;
-const Ygrid = require('react-d3-core').Ygrid;
->>>>>>> fromdetachd
 
 class GridArea extends Component {
 
