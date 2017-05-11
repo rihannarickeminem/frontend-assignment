@@ -16,23 +16,33 @@ class GridArea extends Component {
       width: this.props.width,
       height: this.props.height,
       svgId: this.props.svgId,
+      gridDropTop: this.props.gridDropTop,
+      gridDropLeft: this.props.gridDropLeft,
     };
+  }
+  onResize(){
+    console.log('awegawg aw ');
+    const item = document.getElementById(this.state.svgId);
+    const rect = item.getBoundingClientRect();
+    console.log('sadfas ', rect)
   }
 
   componentDidMount() {
     const item = document.getElementById(this.props.svgId);
     const svgHeight = item.clientHeight;
     const rect = item.getBoundingClientRect();
+    window.addEventListener("resize", this.onResize.bind(this));
+    this.setState({
+      gridDropTop: rect.top,
+      gridDropLeft: rect.left,
+    });
+
     console.log('sadfas ', svgHeight)
     console.log('sadfas ', rect)
     // window.addEventListener("resize", this.updateDimensions);
   }
 
   render() {
-    let margin = {top: 5, right: 50, bottom: 20, left: 50},
-      w = this.state.width - (margin.left + margin.right),
-      h = this.props.height - (margin.top + margin.bottom);
-
     let generalGridData = [];
     let fieldSize = 40,
       boardDimension = 11,
@@ -99,7 +109,7 @@ class GridArea extends Component {
               />
             </g>
           </svg>
-          <GridDrop/>
+          <GridDrop gridDropTop={this.state.gridDropTop} gridDropLeft={this.state.gridDropLeft}/>
         </div>
       </div>
     );
@@ -108,12 +118,16 @@ class GridArea extends Component {
 GridArea.propTypes = {
   width: React.PropTypes.number.isRequired,
   height: React.PropTypes.number.isRequired,
-  svgId: React.PropTypes.string
+  svgId: React.PropTypes.string.isRequired,
+  gridDropTop: React.PropTypes.string.isRequired,
+  gridDropLeft: React.PropTypes.string.isRequired,
 };
 GridArea.defaultProps = {
   width: 400,
   height: 300,
-  svgId: 'v1_chart'
+  svgId: 'v1_chart',
+  gridDropTop: '144px',
+  gridDropLeft: '353px',
 };
 
 export const GridWrapper = (props) => {
