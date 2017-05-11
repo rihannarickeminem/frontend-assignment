@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import Square from './Square';
 import BoardSquare from './BoardSquare';
 import classes from '../Grid.scss'
-// import Knight from './Knight';
 
+@DragDropContext(HTML5Backend)
 export default class Board extends Component {
   renderSquare(i) {
     const x = i % 10;
@@ -38,3 +39,4 @@ export default class Board extends Component {
     );
   }
 }
+// export default DragDropContext(HTML5Backend)(Board);
