@@ -14,15 +14,12 @@ export default class Board extends Component {
     // const piece = (x === 7 && y === 4) ?
     //   <Knight /> :
     //   null;
-    // <Square black={black}>
-    // </Square>
 
     return (
       <div key={i}
-        style={{ width: '10%', height: '10%' }}>
-        <BoardSquare x={x} y={y}>
-          {this.renderPiece(x, y)}
-        </BoardSquare>
+           style={{ width: '10%', height: '10%' }}>
+        <Square black={black}>
+        </Square>
       </div>
     );
   }

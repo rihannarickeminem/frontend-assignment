@@ -128,7 +128,7 @@ webpackConfig.module.loaders = [{
   query: {
     cacheDirectory: true,
     plugins: ["transform-decorators-legacy"],
-    presets: ['es2017', 'react', 'stage-0'],
+    presets: ['latest', 'react', 'stage-2'],
     env: {
       production: {
         presets: ['react-optimize']
