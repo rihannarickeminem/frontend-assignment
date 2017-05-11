@@ -25,8 +25,6 @@ export default class Board extends Component {
 
   render() {
     const squares = [];
-    const gridDropTop = this.props.gridDropTop;
-    const gridDropLeft = this.props.gridDropLeft;
     for (let i = 0; i < 100; i++) {
       squares.push(this.renderSquare(i));
     }
@@ -40,8 +38,8 @@ export default class Board extends Component {
         position: 'absolute',
         zIndex: '999',
         opacity: '0.1',
-        top: gridDropTop,
-        left: gridDropLeft,
+        top: '144px',
+        right: '353px',
       }}>
         {squares}
       </div>
