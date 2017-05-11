@@ -11,21 +11,6 @@ class LineChart extends Component {
       height: this.props.height,
     };
 	}
-	updateDimensions() {
-		// this.setState({width: $(window).width(), height: $(window).height()});
-	}
-
-	componentWillMount() {
-		this.updateDimensions();
-	}
-
-	componentDidMount() {
-		window.addEventListener("resize", this.updateDimensions);
-	}
-
-	componentWillUnmount() {
-		window.removeEventListener("resize", this.updateDimensions);
-	}
 	getGridData() {
 		let { width: widthMain,
 			height: heightMain } = this.state;
@@ -69,26 +54,6 @@ class LineChart extends Component {
 			.data(gridData)
 			.enter().append("g")
 			.attr("class", "row")
-		// row.each
-		// .each(function(d) {
-		// 	console.log('as43y 3', d)
-		// });
-			// .data(function(d) {
-			// 	return d; })
-			// .append("text")
-			// .attr("x", function(d) { return d.x; })
-			// .attr("y", function(d) { return d.y; })
-			// .text(function(d) { return d["data-name"]; })
-			// .text(function(d) {
- // return d["data-name"]; })
-		// .each(function(d) {
-			// console.log('as43y 3', d)
-		// });
-
-		// var text = row.selectAll("text")
-		// // 	.data(gridData)
-		// 	.enter()
-		// 	.append("text");
 		var column = row.selectAll(".square")
 			.data(function(d) {
 				return d; })
