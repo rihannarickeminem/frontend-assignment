@@ -1,84 +1,12 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
+
 import classes from './Grid.scss'
 import * as d3 from "d3";
-import Faux from 'react-faux-dom'
-
-class LineChart extends Component {
-	constructor(props) {
-		super(props);
-    this.state = {
-      width: this.props.width,
-      height: this.props.height,
-    };
-	}
-	getGridData() {
-		let { width: widthMain,
-			height: heightMain } = this.state;
-		let data = [];
-		let xpos = 1;
-		let ypos = 1;
-		let width = (widthMain-10)/10;
-		let height = (heightMain-10)/10;
-
-		for (var row = 0; row < 10; row++) {
-			data.push( [] );
-			for (var column = 0; column < 10; column++) {
-				data[row].push({
-					x: xpos,
-					y: ypos,
-					width: width,
-					height: height
-				})
-				xpos += width;
-			}
-			xpos = 1;
-			ypos += height; 
-		}
-		return data;
-	}
-
-	render() {
-		var el = Faux.createElement('div')
-
-		el.setAttribute('class', 'my-svg-container')
-		el.setAttribute('id', 'grid')
-		var gridData = this.getGridData(); 
-		var grid = d3.select(el)
-			.append("svg")
-			.attr("class","my-svg")
-			.attr("preserveAspectRatio","xMidYMin slice")
-			.attr("viewBox","0 0 400 400")
-			.append("g")
-			.attr("transform","translate(0, 0)");
-		var row = grid.selectAll(".row")
-			.data(gridData)
-			.enter().append("g")
-			.attr("class", "row")
-		var column = row.selectAll(".square")
-			.data(function(d) {
-				return d; })
-			.enter().append("rect")
-			.attr("class","square")
-			.attr("x", function(d) { return d.x; })
-			.attr("y", function(d) { return d.y; })
-			.attr("width", function(d) { return d.width; })
-			.attr("height", function(d) { return d.height; })
-			.style("fill", "#fff")
-			.style("stroke", "#222");
-
-		return el.toReact()
-	}
-};
-LineChart.propTypes = {
-    width: React.PropTypes.number.isRequired,
-    height: React.PropTypes.number.isRequired,
-    chartId: React.PropTypes.string
-};
-LineChart.defaultProps = {
-	width: 250,
-	height: 250,
-	chartId: 'v1_chart'
-};
+import Square from './cheese/Square';
+import GridDrop from './cheese/GridDrop';
+// import Board from './cheese/Board';
+const Xgrid = require('react-d3-core').Xgrid;
+const Ygrid = require('react-d3-core').Ygrid;
 
 class GridArea extends Component {
 
