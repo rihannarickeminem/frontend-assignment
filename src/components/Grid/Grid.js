@@ -77,8 +77,8 @@ class GridArea extends Component {
 
     return (
       <div>
-        <div >
-          <svg id={this.props.svgId} width={this.state.width} height={this.props.height}>
+        <div className={classes['my-svg-container']}>
+          <svg id={this.props.svgId} className={classes['my-svg']} width={this.state.width} height={this.props.height}>
             <g transform={transform}>
               <Xgrid
                 width={width}
@@ -106,7 +106,7 @@ class GridArea extends Component {
               />
             </g>
           </svg>
-          <GridDrop/>
+          <GridDrop />
         </div>
       </div>
     );

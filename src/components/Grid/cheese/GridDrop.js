@@ -38,8 +38,8 @@ export default class Board extends Component {
         position: 'absolute',
         zIndex: '999',
         opacity: '0.1',
-        top: '144px',
-        right: '353px',
+        top: '30px',
+        left: '50px',
       }}>
         {squares}
       </div>
