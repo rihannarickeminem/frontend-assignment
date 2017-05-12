@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ItemTypes } from './Constants';
 import { DragSource } from 'react-dnd';
 
 const knightSource = {
@@ -37,4 +36,4 @@ Knight.propTypes = {
   isDragging: PropTypes.bool.isRequired
 };
 
-export default DragSource(ItemTypes.KNIGHT, knightSource, collect)(Knight);
+export default DragSource('Marker', knightSource, collect)(Knight);

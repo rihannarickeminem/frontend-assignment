@@ -8,7 +8,6 @@ const Xgrid = require('react-d3-core').Xgrid;
 const Ygrid = require('react-d3-core').Ygrid;
 
 export default class GridArea extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -17,28 +16,7 @@ export default class GridArea extends Component {
       svgId: this.props.svgId,
     };
   }
-  onResize(){
-    console.log('awegawg aw ');
-    const item = document.getElementById(this.state.svgId);
-    const rect = item.getBoundingClientRect();
-    console.log('sadfas ', rect)
-  }
-
-  componentDidMount() {
-    const item = document.getElementById(this.props.svgId);
-    const svgHeight = item.clientHeight;
-    const rect = item.getBoundingClientRect();
-    window.addEventListener("resize", this.onResize.bind(this));
-    console.log('sadfas ', svgHeight)
-    console.log('sadfas ', rect)
-    // window.addEventListener("resize", this.updateDimensions);
-  }
-
   render() {
-    let margin = {top: 5, right: 50, bottom: 20, left: 50},
-      w = this.state.width - (margin.left + margin.right),
-      h = this.props.height - (margin.top + margin.bottom);
-
     let generalGridData = [];
     let fieldSize = 40,
       boardDimension = 11,
@@ -105,16 +83,11 @@ export default class GridArea extends Component {
               />
             </g>
           </svg>
-          <GridDrop />
+          <GridDrop markParams={{ x: null, y: null }}/>
         </div>
       </div>
     );
   }
-};
-GridArea.propTypes = {
-  width: React.PropTypes.number.isRequired,
-  height: React.PropTypes.number.isRequired,
-  svgId: React.PropTypes.string
 };
 GridArea.defaultProps = {
   width: 400,

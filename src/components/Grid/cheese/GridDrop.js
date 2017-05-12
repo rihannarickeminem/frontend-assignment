@@ -1,29 +1,25 @@
 import React, { Component } from 'react';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
-import Square from './Square';
 import BoardSquare from './BoardSquare';
 import classes from '../Grid.scss'
+import Marker from './Marker';
 
-@DragDropContext(HTML5Backend)
 export default class Board extends Component {
   renderSquare(i) {
-    const x = i % 10;
-    const y = Math.floor(i / 10);
-    const black = (x + y) % 2 === 1;
-
-    // const [knightX, knightY] = this.props.knightPosition={[7, 4]};
-    // const piece = (x === 7 && y === 4) ?
-    //   <Knight /> :
-    //   null;
+    const X = i % 10;
+    const Y = 9 - Math.floor(i / 10);
 
     return (
-      <div key={i}
-           style={{ width: '10%', height: '10%' }}>
-        <Square black={black}>
-        </Square>
+      <div key={i} style={{ width: '10%', height: '10%' }}>
+        <BoardSquare x={X} y={Y}>
+          {this.renderMark(X, Y)}
+        </BoardSquare>
       </div>
     );
+  }
+  renderMark(X, Y) {
+    const { x: markX, y: markY } = this.props.markParams;
+    const isMarkHere = X === markX && Y === markY;
+    return isMarkHere ? <Marker /> : null;
   }
 
   render() {
@@ -39,4 +35,3 @@ export default class Board extends Component {
     );
   }
 }
-// export default DragDropContext(HTML5Backend)(Board);
