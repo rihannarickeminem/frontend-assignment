@@ -3,7 +3,6 @@ import { DragSource } from 'react-dnd';
 
 const markerSource = {
   beginDrag(props) {
-    debugger;
     return props;
   }
 };
@@ -17,7 +16,7 @@ function collect(connect, monitor) {
 
 class Marker extends Component {
   render() {
-    const { connectDragSource, isDragging } = this.props;
+    const { connectDragSource, isDragging, forGrid } = this.props;
     const { y, x } = this.props;
     return connectDragSource(
       <div style={{
@@ -26,7 +25,7 @@ class Marker extends Component {
         fontWeight: 'bold',
         cursor: 'move'
       }}>
-        ♗ x: {x}, y: {y} 
+      {forGrid ? `♗` : `♗ x: ${x}, y: ${y}` }
       </div>
     );
   }

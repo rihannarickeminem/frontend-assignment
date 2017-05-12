@@ -44,10 +44,10 @@ const ACTION_HANDLERS = {
   [COUNTER_INCREMENT]: (state, action) => state + action.payload
 }
 const requiredXYs = {
-  1: { x: 5, y: 8},
-  2: { x: 4, y: 3},
-  3: { x: 7, y: 1},
-  4: { x: 8, y: 0},
+  1: { x: 5, y: 8, placedX: null, placedY: null},
+  2: { x: 4, y: 3, placedX: null, placedY: null},
+  3: { x: 7, y: 1, placedX: null, placedY: null},
+  4: { x: 8, y: 0, placedX: null, placedY: null},
 };
 const defaultXYs = {
   1: {},

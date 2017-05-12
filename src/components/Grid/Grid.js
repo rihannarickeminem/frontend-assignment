@@ -5,7 +5,6 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import RequiredXYs from './Markers';
 
 import classes from './Grid.scss'
-
 @DragDropContext(HTML5Backend)
 export default class GridWrapper extends Component {
   render() {
@@ -16,7 +15,7 @@ export default class GridWrapper extends Component {
           <RequiredXYs {...props}/>
         </div>
         <div className={classes['main-content']}>
-          <GridArea/>
+          <GridArea {...props}/>
         </div>
       </div>
     )

@@ -10,6 +10,7 @@ const Ygrid = require('react-d3-core').Ygrid;
 export default class GridArea extends Component {
   constructor(props) {
     super(props);
+    debugger;
     this.state = {
       width: this.props.width,
       height: this.props.height,
@@ -83,7 +84,7 @@ export default class GridArea extends Component {
               />
             </g>
           </svg>
-          <GridDrop markParams={{ x: null, y: null }}/>
+          <GridDrop gridParams={this.props.gridParams}/>
         </div>
       </div>
     );

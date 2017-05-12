@@ -8,8 +8,8 @@ const squareTarget = {
   canDrop(props, monitor) {
     const item = monitor.getItem();
     // console.log('props.x ',item , props);
-    return item.x === props.x && item.y === props.y;
-    // return true;
+    // return item.x === props.x && item.y === props.y;
+    return true;
   },
 
   drop(props) {

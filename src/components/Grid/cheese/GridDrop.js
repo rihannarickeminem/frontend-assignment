@@ -17,9 +17,12 @@ export default class Board extends Component {
     );
   }
   renderMark(X, Y) {
-    const { x: markX, y: markY } = this.props.markParams;
-    const isMarkHere = X === markX && Y === markY;
-    return isMarkHere ? <Marker /> : null;
+    let { gridParams: { requiredXYs } } = this.props;
+    let whichMarkHere = Object.values(requiredXYs).filter(marker => {
+      return marker.placedX === X && marker.placedY === Y;
+    });
+    return whichMarkHere.length > 0 ?
+      <Marker x={whichMarkHere.x} y={whichMarkHere.y} forGrid={true}/> : null;
   }
 
   render() {
