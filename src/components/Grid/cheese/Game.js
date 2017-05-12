@@ -28,7 +28,9 @@ export function canMoveKnight(toX, toY) {
 }
 
 export function moveKnight(toX, toY) {
-
+  /****
+   **@action to set placedX/y
+   ** */
   knightPosition = [toX, toY];
   emitChange();
 }
