@@ -20,7 +20,7 @@ export default class Board extends Component {
 
     return (
       <div key={i} style={{ width: '12.5%', height: '12.5%' }}>
-        <BoardSquare x={x} y={y}>
+        <BoardSquare x={x} y={y} {...props}>
           {this.renderPiece(x, y)}
         </BoardSquare>
       </div>

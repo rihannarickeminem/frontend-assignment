@@ -21,6 +21,8 @@ export default class ChessboardTutorialApp extends Component {
   }
 
   componentWillUnmount() {
+    // debugger;
+    console.log('sdfsaf', this.props);
     this.unobserve();
   }
 

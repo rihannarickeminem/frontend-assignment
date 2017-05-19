@@ -16,8 +16,11 @@ function collect(connect, monitor) {
 
 class Marker extends Component {
   render() {
-    const { connectDragSource, isDragging, forGrid } = this.props;
-    const { y, x } = this.props;
+    const { connectDragSource,
+      isDragging,
+      forGrid,
+      setMarkPosition,
+      x,y} = this.props;
     return connectDragSource(
       <div style={{
         opacity:  1,
@@ -25,7 +28,9 @@ class Marker extends Component {
         fontWeight: 'bold',
         cursor: 'move'
       }}>
-      {forGrid ? `♗` : `♗ x: ${x}, y: ${y}` }
+      {forGrid ?
+          `♗` :
+          `♗ x: ${x}, y: ${y} ` }
       </div>
     );
   }

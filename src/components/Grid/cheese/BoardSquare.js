@@ -4,18 +4,41 @@ import { DropTarget } from 'react-dnd';
 import Square from './Square';
 import { canMoveKnight, moveKnight } from './Game';
 
+let observer = null;
+
+function emitChange(emitParam) {
+  observer(emitParam);
+}
+
+export function observe(o) {
+  if (observer) {
+    throw new Error('Multiple observers not implemented.');
+  }
+
+  observer = o;
+  emitChange();
+
+  return () => {
+    observer = null;
+  };
+}
+
 const squareTarget = {
   canDrop(props, monitor) {
     const item = monitor.getItem();
-    // console.log('props.x ',item , props);
     // return item.x === props.x && item.y === props.y;
     return true;
   },
 
-  drop(props) {
+  drop(props, monitor) {
+    const item = monitor.getItem();
+    props.setMarkPosition(props, item)
+      .then(f=>{
+        emitChange({props, item});
+      });
     // const item = monitor.getItem();
     // return item.x === props.x && item.y === props.y;
-    moveKnight(props.x, props.y);
+    // moveKnight(props.x, props.y);
   },
 };
 
@@ -58,7 +81,6 @@ export default class BoardSquare extends Component {
   render() {
     const { x, y, connectDropTarget, isOver, canDrop, children } = this.props;
     const black = (x + y) % 2 === 1;
-    // console.log('sadfasfas3t a3 3', x, y);
 
     return connectDropTarget(
       <div

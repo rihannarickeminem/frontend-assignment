@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
-import { increment, doubleAsync } from '../modules/grid'
+import { setMarkPosition } from '../modules/grid'
+// import { setPosition } from '../modules/grid'
 
 /*  This is a container component. Notice it does not contain any JSX,
     nor does it import React. This component is **only** responsible for
@@ -13,6 +14,8 @@ import Grid from 'components/Grid'
     implementing our wrapper around increment; the component doesn't care   */
 
 const mapActionCreators = {
+  // setPosition,
+  setMarkPosition,
   // increment: () => increment(1),
   // doubleAsync
 }

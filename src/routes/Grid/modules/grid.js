@@ -1,7 +1,8 @@
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const COUNTER_INCREMENT = 'COUNTER_INCREMENT'
+// export const COUNTER_INCREMENT = 'COUNTER_INCREMENT'
+export const SET_MARK_POSITION = 'SET_MARK_POSITION'
 
 // ------------------------------------
 // Actions
@@ -32,16 +33,57 @@ export const COUNTER_INCREMENT = 'COUNTER_INCREMENT'
 //   }
 // }
 
-export const actions = {
-  // increment,
-  // doubleAsync
+export const setMarkPosition = (props, item) => {
+  return (dispatch, getState) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        dispatch(setPosition(props, item))
+        resolve()
+      }, 200)
+    })
+  }
 }
+export function setPosition (props, item) {
+  return {
+    type: SET_MARK_POSITION,
+    payload: {
+      x: props.x,
+      y: props.y,
+      requiredXY: item.requiredXY,
+    }
+  }
+}
+
+// export const actions = {
+  // setMarkPosition,
+//   // increment,
+//   // doubleAsync
+// }
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [COUNTER_INCREMENT]: (state, action) => state + action.payload
+  // [COUNTER_INCREMENT]: (state, action) => state + action.payload
+  [SET_MARK_POSITION]: (state, action) => {
+    Object.assign(
+      state.requiredXYs[
+        action.payload.requiredXY.marKey],
+      {placedX: action.payload.x,
+        placedY: action.payload.y})
+    return state
+    // return state.requiredXYs.map
+    // return state.map(lane => {
+    //   if(lane.id === action.id) {
+    //     const {type, ...updatedLane} = action;
+    //     return Object.assign({}, lane, updatedLane);
+    //   }
+
+    //   return lane;
+    // });
+
+    // state + action.payload
+  },
 }
 const requiredXYs = {
   1: { x: 5, y: 8, placedX: null, placedY: null},
