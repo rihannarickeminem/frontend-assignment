@@ -23,10 +23,10 @@ let markerStyle = {
 
 class Marker extends Component {
   render() {
-    // let markerStyle = markerStyle;
     const { connectDragSource,
       isDragging,
       forGrid,
+      requiredXY,
       rightPosition,
       x,y} = this.props;
     let cellClasses;

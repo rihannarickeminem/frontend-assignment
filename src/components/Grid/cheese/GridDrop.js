@@ -25,6 +25,7 @@ export default class Board extends Component {
       let rightPosition = whichMarkHere[0].x === X &&
         whichMarkHere[0].y === Y;
       return <Marker setMarkPosition={setMarkPosition}
+        requiredXY={whichMarkHere[0]}
         forGrid={true}
         rightPosition={rightPosition}
       />;
