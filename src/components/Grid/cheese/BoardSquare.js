@@ -25,7 +25,10 @@ export function observe(o) {
 const squareTarget = {
   canDrop(props, monitor) {
     const item = monitor.getItem();
-    return true;
+    let whichMarkHere = Object.values(props.gridParams.requiredXYs).filter(marker => {
+      return marker.placedX === props.x && marker.placedY === props.y;
+    });
+    return whichMarkHere.length === 0;
   },
 
   drop(props, monitor) {

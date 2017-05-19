@@ -123,17 +123,17 @@ export default class GridArea extends Component {
       </g>
     </svg>
     <GridDrop {...this.props}/>
-        </div>
-        <div onClick={this.toggleShowCheckScreen}
-        style={{
-          padding: '5px 15px',
-          width: '400px',
-          borderRadius: "5px",
-          cursor: 'pointer',
-        }}
-        className={classes[checkButtonClass]}>
-        Check
       </div>
+        <div onClick={enableCheck && this.toggleShowCheckScreen}
+          style={{
+            padding: '5px 15px',
+            width: '400px',
+            borderRadius: "5px",
+            cursor: 'pointer',
+          }}
+          className={classes[checkButtonClass]}>
+          Check
+        </div>
       </div>);
     return (
       <div
