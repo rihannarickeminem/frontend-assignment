@@ -72,17 +72,6 @@ const ACTION_HANDLERS = {
       {placedX: action.payload.x,
         placedY: action.payload.y})
     return state
-    // return state.requiredXYs.map
-    // return state.map(lane => {
-    //   if(lane.id === action.id) {
-    //     const {type, ...updatedLane} = action;
-    //     return Object.assign({}, lane, updatedLane);
-    //   }
-
-    //   return lane;
-    // });
-
-    // state + action.payload
   },
 }
 const requiredXYs = {

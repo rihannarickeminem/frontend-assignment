@@ -28,7 +28,6 @@ export function canMoveKnight(toX, toY) {
 }
 
 export function moveKnight(toX, toY) {
-  debugger;
   /****
    **@action to set placedX/y
    ** */

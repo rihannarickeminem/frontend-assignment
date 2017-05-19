@@ -52,6 +52,14 @@ export default class GridArea extends Component {
 
     let transform='translate(' + margins.left + ',' + margins.top + ')';
 
+    let placedMarks = Object.values(this.props.gridParams.requiredXYs)
+      .filter(marker => {
+      return marker.placedX && marker.placedY;
+    });
+    let enableCheck = placedMarks.length === 4;
+
+    let checkButtonClass = enableCheck ?
+      'enabled-button' : 'disabled-button';
     return (
       <div>
         <div className={classes['my-svg-container']}>
@@ -85,6 +93,15 @@ export default class GridArea extends Component {
           </svg>
           <GridDrop {...this.props}/>
         </div>
+        <div style={{
+          padding: '5px 15px',
+          width: '400px',
+          borderRadius: "5px",
+          cursor: 'pointer',
+        }}
+          className={classes[checkButtonClass]}>
+            Check
+          </div>
       </div>
     );
   }

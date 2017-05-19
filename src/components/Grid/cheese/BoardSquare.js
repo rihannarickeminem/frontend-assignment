@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
 import Square from './Square';
-import { canMoveKnight, moveKnight } from './Game';
 
 let observer = null;
 
@@ -26,7 +25,6 @@ export function observe(o) {
 const squareTarget = {
   canDrop(props, monitor) {
     const item = monitor.getItem();
-    // return item.x === props.x && item.y === props.y;
     return true;
   },
 
@@ -36,9 +34,6 @@ const squareTarget = {
       .then(f=>{
         emitChange({props, item});
       });
-    // const item = monitor.getItem();
-    // return item.x === props.x && item.y === props.y;
-    // moveKnight(props.x, props.y);
   },
 };
 

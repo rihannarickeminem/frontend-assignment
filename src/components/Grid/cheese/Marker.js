@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
+import classes from '../Grid.scss'
 
 const markerSource = {
   beginDrag(props) {
@@ -13,21 +14,31 @@ function collect(connect, monitor) {
     isDragging: monitor.isDragging()
   }
 }
+let markerStyle = {
+  opacity:  1,
+  fontSize: 20,
+  fontWeight: 'bold',
+  cursor: 'move',
+}
 
 class Marker extends Component {
   render() {
+    // let markerStyle = markerStyle;
     const { connectDragSource,
       isDragging,
       forGrid,
-      setMarkPosition,
+      rightPosition,
       x,y} = this.props;
+    let cellClasses;
+    if(forGrid){
+      cellClasses = classes['wrongCell'];
+    }
+    if(rightPosition){
+      cellClasses = classes['rightCell'];
+    }
     return connectDragSource(
-      <div style={{
-        opacity:  1,
-        fontSize: 25,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
+      <div className={cellClasses}
+        style={markerStyle}>
       {forGrid ?
           `♗` :
           `♗ x: ${x}, y: ${y} ` }
