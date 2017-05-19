@@ -10,12 +10,7 @@ export default class RequiredXYs extends Component {
         {Object.keys(props.gridParams.requiredXYs)
             .map(key =>
               <li key={key} className={classes['requiredXYs']}>
-                <Marker requiredXY={
-                    Object.assign({},
-                      props.gridParams.requiredXYs[key],
-                      { marKey: key}
-                    )
-                }
+                <Marker requiredXY={ props.gridParams.requiredXYs[key] }
                 x={props.gridParams.requiredXYs[key].x}
                 y={props.gridParams.requiredXYs[key].y} />
               </li>

@@ -36,12 +36,22 @@ class Marker extends Component {
     if(rightPosition){
       cellClasses = classes['rightCell'];
     }
+    let text = forGrid ?
+      (<div>
+        ♗ <span style={{
+          fontSize: '10px',
+          position: 'absolute',
+          right: '0px',
+          top: '-2px',
+        }}>
+          {requiredXY.x},{requiredXY.y}
+        </span>
+       </div>) :
+      `♗ x: ${x}, y: ${y} `;
     return connectDragSource(
       <div className={cellClasses}
         style={markerStyle}>
-      {forGrid ?
-          `♗` :
-          `♗ x: ${x}, y: ${y} ` }
+        {text}
       </div>
     );
   }
