@@ -29,7 +29,8 @@ export default class GridWrapper extends Component {
           <RequiredXYs {...props}/>
         </div>
         <div className={classes['main-content']}>
-          <GridArea {...props}/>
+          <GridArea
+            {...props}/>
         </div>
       </div>
     )

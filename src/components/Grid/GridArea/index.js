@@ -14,7 +14,15 @@ export default class GridArea extends Component {
       width: this.props.width,
       height: this.props.height,
       svgId: this.props.svgId,
+      showCheckScreen: false,
     };
+    this.toggleShowCheckScreen = this.toggleShowCheckScreen.bind(this);
+  }
+  toggleShowCheckScreen(){
+    this.setState({
+      ...this.state,
+      showCheckScreen: !this.state.showCheckScreen,
+    });
   }
   render() {
     let generalGridData = [];
@@ -52,56 +60,88 @@ export default class GridArea extends Component {
 
     let transform='translate(' + margins.left + ',' + margins.top + ')';
 
-    let placedMarks = Object.values(this.props.gridParams.requiredXYs)
+    let marks = Object.values(this.props.gridParams.requiredXYs);
+    let placedMarks = Object.values(marks)
       .filter(marker => {
-      return marker.placedX && marker.placedY;
+      return marker.placedX !== undefined && marker.placedY !== undefined;
     });
     let enableCheck = placedMarks.length === 4;
-
+    let everythingCorrect = Object.values(marks)
+      .filter(marker => {
+        return marker.x === marker.placedX &&
+                  marker.y === marker.placedY;
+    }).length === 4;
     let checkButtonClass = enableCheck ?
       'enabled-button' : 'disabled-button';
-    return (
-      <div>
-        <div className={classes['my-svg-container']}>
-          <svg id={this.props.svgId} className={classes['my-svg']} width={this.state.width} height={this.props.height}>
-            <g transform={transform}>
-              <Xgrid
-                width={width}
-                height={height}
-                margins={margins}
-                type={'x'}
-                gridAxisClassName={gridAxisClassName}
-                x={x}
-                xDomain={xDomain}
-                xRange={xRange}
-                xScale={xScale}
-                yScale={yScale}
-              />
-              <Ygrid
-                width={width}
-                height={height}
-                margins={margins}
-                type={'y'}
-                gridAxisClassName= {gridAxisClassName}
-                y={y}
-                yDomain={yDomain}
-                yRange={yRange}
-                yScale={yScale}
-                xScale={xScale}
-              />
-            </g>
-          </svg>
-          <GridDrop {...this.props}/>
+    let checkScreenClass =  everythingCorrect ?
+      'placed-correctly' : 'placed-uncorrectly';
+    const wtshow = this.state.showCheckScreen ?
+      (
+        <div 
+          className={classes[checkScreenClass]}
+          style={{
+            padding: '20px 20px',
+            height: '100%',
+            borderRadius: "5px",
+            cursor: 'pointer',
+            textAlign: 'center',
+            fontSize: '50px',
+          }}
+          onClick={this.toggleShowCheckScreen}
+        >
+          {everythingCorrect ? 'Correct !!!' : 'Uncorrect !!!' }
         </div>
-        <div style={{
+      )
+      :( <div>
+        <div className={classes['my-svg-container']}>
+        <svg id={this.props.svgId} className={classes['my-svg']} width={this.state.width} height={this.props.height}>
+        <g transform={transform}>
+        <Xgrid
+          width={width}
+          height={height}
+          margins={margins}
+          type={'x'}
+          gridAxisClassName={gridAxisClassName}
+          x={x}
+          xDomain={xDomain}
+          xRange={xRange}
+          xScale={xScale}
+          yScale={yScale}
+        />
+        <Ygrid
+          width={width}
+          height={height}
+          margins={margins}
+          type={'y'}
+          gridAxisClassName= {gridAxisClassName}
+          y={y}
+          yDomain={yDomain}
+          yRange={yRange}
+          yScale={yScale}
+          xScale={xScale}
+        />
+      </g>
+    </svg>
+    <GridDrop {...this.props}/>
+        </div>
+        <div onClick={this.toggleShowCheckScreen}
+        style={{
           padding: '5px 15px',
           width: '400px',
           borderRadius: "5px",
           cursor: 'pointer',
         }}
-          className={classes[checkButtonClass]}>
-            Check
-          </div>
+        className={classes[checkButtonClass]}>
+        Check
+      </div>
+      </div>);
+    return (
+      <div
+        style={{
+          height: '100%',
+        }}
+      >
+        {wtshow}
       </div>
     );
   }

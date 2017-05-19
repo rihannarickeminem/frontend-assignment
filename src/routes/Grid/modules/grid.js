@@ -75,10 +75,10 @@ const ACTION_HANDLERS = {
   },
 }
 const requiredXYs = {
-  1: { x: 5, y: 8, placedX: null, placedY: null},
-  2: { x: 4, y: 3, placedX: null, placedY: null},
-  3: { x: 7, y: 1, placedX: null, placedY: null},
-  4: { x: 8, y: 0, placedX: null, placedY: null},
+  1: { x: 5, y: 8, placedX: undefined, placedY: undefined},
+  2: { x: 4, y: 3, placedX: undefined, placedY: undefined},
+  3: { x: 7, y: 1, placedX: undefined, placedY: undefined},
+  4: { x: 8, y: 0, placedX: undefined, placedY: undefined},
 };
 const defaultXYs = {
   1: {},
